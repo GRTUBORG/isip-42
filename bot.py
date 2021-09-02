@@ -31,8 +31,8 @@ def start_command(message):
     api_token = os.environ.get('bot_api')
 
     data = {
-        "botId": bot_id,
-        "apiToken": api_token,
+        "botId": str(bot_id),
+        "apiToken": str(api_token),
         "requestType": "event",
         "userId": user_id,
         "event": "/start"
