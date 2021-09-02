@@ -42,7 +42,7 @@ def send_event(user_id, event_name):
 @bot.message_handler(commands = ['start'])
 def start_command(message):
     
-    send_event(your_user_id, "common")
+    send_event(655041562, "common")
     str_countes = ''
     countes = [f'{message.from_user.id} — ID,\n',
                f'{message.from_user.first_name} — имя,\n',
