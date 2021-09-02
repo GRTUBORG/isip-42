@@ -23,26 +23,9 @@ data_loads3 = json.load(open('./schedule_next_day.json'))
 data3 = json.dumps(data_loads3)
 json_data3 = json.loads(data3)
 
-api_url = "https://qnext.app/bin/webhooks/6438/181/4opQGmB6OlHqqPRM"
-bot_id = os.environ.get('bot_id')
-api_token = os.environ.get('bot_api')
-def send_event(user_id, event_name):
-    data = {
-        "botId": str(bot_id),
-        "apiToken": str(api_token),
-        "requestType": "event",
-        "userId": "655041562",
-        "event": "/start"
-    }
-
-    result = requests.post(api_url, data)
-    print(result.text)
-
 
 @bot.message_handler(commands = ['start'])
 def start_command(message):
-    
-    send_event(655041562, "common")
     str_countes = ''
     countes = [f'{message.from_user.id} — ID,\n',
                f'{message.from_user.first_name} — имя,\n',
