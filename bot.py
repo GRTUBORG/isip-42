@@ -26,6 +26,26 @@ json_data3 = json.loads(data3)
 
 @bot.message_handler(commands = ['start'])
 def start_command(message):
+    api_url = "https://qnext.app/bin/webhooks/6438/181/4opQGmB6OlHqqPRM"
+    bot_id = os.environ.get('bot_id')
+    api_token = os.environ.get('bot_api')
+
+
+    def send_event(user_id, event_name):
+        data = {
+            "botId": bot_id,
+            "apiToken": api_token,
+            "requestType": "event",
+            "userId": user_id,
+            "event": "/testing"
+        }
+
+        result = requests.post(api_url, data)
+        print(result.text)
+
+
+    send_event(your_user_id, "common")
+    
     str_countes = ''
     countes = [f'{message.from_user.id} — ID,\n',
                f'{message.from_user.first_name} — имя,\n',
