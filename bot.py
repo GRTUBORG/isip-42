@@ -290,7 +290,7 @@ def text(message):
         keyboard = types.InlineKeyboardMarkup()
         button = types.InlineKeyboardButton(text = "📝 Написать разработчику", url = 'https://t.me/ppippette')
         keyboard.add(button)
-        bot.send_message(message.chat.id, '*Наша команда* \n\n🧑‍💻 *Разработчик:* @ppippette \n🛠 *Тестировщик:* @whomet', parse_mode = 'Markdown', reply_markup = keyboard)
+        bot.send_message(message.chat.id, '*Наша команда* \n\n🧑‍💻 *Разработчик:* @ppippette \n🛠 *Тестировщик:* @whomet \nОбо всех ошибках и проблемах просьба писать *разработчику* ✍️', parse_mode = 'Markdown', reply_markup = keyboard)
             
 if __name__ == '__main__':
     while True:
