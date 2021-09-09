@@ -9,8 +9,7 @@ import requests
 from telebot import types
 from datetime import datetime, date, timedelta
 
-token = os.environ.get('bot_token')
-bot = telebot.TeleBot(str(token))
+bot = telebot.TeleBot('1990116731:AAExfJn-_aEPnHOtcv9WnB-hUU4OOpuALP8')
 print('Бот работает!')
 
 days_count = ['1', '2', '3', '4', '5', '6', '7']
@@ -22,7 +21,6 @@ json_data = json.loads(data)
 data_loads3 = json.load(open('./schedule_next_day.json'))
 data3 = json.dumps(data_loads3)
 json_data3 = json.loads(data3)
-
 
 @bot.message_handler(commands = ['start'])
 def start_command(message):
@@ -42,8 +40,6 @@ def start_command(message):
     keyboard.row(button2)
     bot.send_message(655041562, f'У тебя +1 новый пользователь! \n{str_countes}')
     bot.reply_to(message, "*Рад тебя видеть!* \n\nПропиши /schedule, или воспользуйся клавиатурой ниже! Если вдруг ты заблудился или забыл команды (со всеми бывает, не переживай) — /help в помощь.", parse_mode = 'Markdown', reply_markup = keyboard)
-    
-
 
 @bot.message_handler(commands = ['help'])
 def send_help(message):
@@ -51,6 +47,17 @@ def send_help(message):
                                                                "\n• /schedule_next — расписание на завтра;"
                                                                "\n• /schedule [цифра] — расписание для конкретного дня недели.")
 
+@bot.message_handler(commands = ['schedule_full'])
+def schedule_full(message):
+    even_numbered_week = open('./Schedule/Чётная неделя.docx', 'rb')
+    odd_week = open('./Schedule/Нечётная неделя.docx', 'rb')
+    bot.send_message(message.chat.id, 'Расписание на чётную неделю:')
+    bot.send_document(message.chat.id, even_numbered_week)
+    bot.send_message(message.chat.id, 'Расписание на нечётную неделю:')
+    bot.send_document(message.chat.id, odd_week)
+    even_numbered_week.close()
+    odd_week.close()
+    
 @bot.message_handler(commands = ['schedule'])
 def schedule(message):
     if message.text == '/schedule':
@@ -158,8 +165,7 @@ def schedule_next(message):
             parity = 0
     else:
         days_print = days_int
-    
-        
+     
     if parity == 0:
         schedule_days_int = json_data3["Для нечётной недели"]
         schedule = ''
@@ -191,10 +197,9 @@ def schedule_next(message):
         keyboard.row(button2)
         bot.send_message(message.chat.id, schedule, parse_mode = 'Markdown', reply_markup = keyboard)
 
-
 @bot.message_handler(content_types = ['text'])
 def text(message):
-    if message.text == 'Расписание на сегодня':
+    if message.text.lower() == 'расписание на сегодня':
         delta = timedelta(hours = 3)
         now = datetime.now() + delta
         days_int = now.isoweekday()
@@ -234,7 +239,7 @@ def text(message):
             keyboard.row(button, button1)
             keyboard.row(button2)
             bot.send_message(message.chat.id, schedule, parse_mode = 'Markdown', reply_markup = keyboard)
-    elif message.text == 'Расписание на завтра':
+    elif message.text.lower() == 'расписание на завтра':
         delta = timedelta(hours = 3)
         delta1 = timedelta(days = 1)
         now = datetime.now() + delta
@@ -286,12 +291,21 @@ def text(message):
             keyboard.row(button, button1)
             keyboard.row(button2)
             bot.send_message(message.chat.id, schedule, parse_mode = 'Markdown', reply_markup = keyboard)
-    elif message.text == 'О нас':
+    elif message.text.lower() == 'о нас':
         keyboard = types.InlineKeyboardMarkup()
         button = types.InlineKeyboardButton(text = "📝 Написать разработчику", url = 'https://t.me/ppippette')
         keyboard.add(button)
         bot.send_message(message.chat.id, '*Наша команда* \n\n🧑‍💻 *Разработчик:* @ppippette \n🛠 *Тестировщик:* @whomet \nОбо всех ошибках и проблемах просьба писать *разработчику* ✍️', parse_mode = 'Markdown', reply_markup = keyboard)
-            
+    elif message.text.lower() == 'полное расписание':
+        even_numbered_week = open('./Schedule/Чётная неделя.docx', 'rb')
+        odd_week = open('./Schedule/Нечётная неделя.docx', 'rb')
+        bot.send_message(message.chat.id, 'Расписание на чётную неделю:')
+        bot.send_document(message.chat.id, even_numbered_week)
+        bot.send_message(message.chat.id, 'Расписание на нечётную неделю:')
+        bot.send_document(message.chat.id, odd_week)
+        even_numbered_week.close()
+        odd_week.close()
+
 if __name__ == '__main__':
     while True:
         try:
