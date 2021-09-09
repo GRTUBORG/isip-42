@@ -22,6 +22,7 @@ data_loads3 = json.load(open('./schedule_next_day.json'))
 data3 = json.dumps(data_loads3)
 json_data3 = json.loads(data3)
 
+
 @bot.message_handler(commands = ['start'])
 def start_command(message):
     str_countes = ''
@@ -36,10 +37,13 @@ def start_command(message):
     button = types.KeyboardButton(text = "Расписание на сегодня")
     button1 = types.KeyboardButton(text = "Расписание на завтра")
     button2 = types.KeyboardButton(text = "О нас")
+    button3 = types.KeyboardButton(text = "Полное расписание")
     keyboard.row(button, button1)
-    keyboard.row(button2)
+    keyboard.row(button2, button3)
     bot.send_message(655041562, f'У тебя +1 новый пользователь! \n{str_countes}')
     bot.reply_to(message, "*Рад тебя видеть!* \n\nПропиши /schedule, или воспользуйся клавиатурой ниже! Если вдруг ты заблудился или забыл команды (со всеми бывает, не переживай) — /help в помощь.", parse_mode = 'Markdown', reply_markup = keyboard)
+    
+
 
 @bot.message_handler(commands = ['help'])
 def send_help(message):
@@ -82,8 +86,9 @@ def schedule(message):
             button = types.KeyboardButton(text = "Расписание на сегодня")
             button1 = types.KeyboardButton(text = "Расписание на завтра")
             button2 = types.KeyboardButton(text = "О нас")
+            button3 = types.KeyboardButton(text = "Полное расписание")
             keyboard.row(button, button1)
-            keyboard.row(button2)
+            keyboard.row(button2, button3)
             bot.send_message(message.chat.id, schedule, parse_mode = 'Markdown', reply_markup = keyboard)
         else:
             schedule_days_int = json_data["Для чётной недели"]
@@ -97,8 +102,9 @@ def schedule(message):
             button = types.KeyboardButton(text = "Расписание на сегодня")
             button1 = types.KeyboardButton(text = "Расписание на завтра")
             button2 = types.KeyboardButton(text = "О нас")
+            button3 = types.KeyboardButton(text = "Полное расписание")
             keyboard.row(button, button1)
-            keyboard.row(button2)
+            keyboard.row(button2, button3)
             bot.send_message(message.chat.id, schedule, parse_mode = 'Markdown', reply_markup = keyboard)
     else:
         try:
@@ -122,8 +128,9 @@ def schedule(message):
                 button = types.KeyboardButton(text = "Расписание на сегодня")
                 button1 = types.KeyboardButton(text = "Расписание на завтра")
                 button2 = types.KeyboardButton(text = "О нас")
+                button3 = types.KeyboardButton(text = "Полное расписание")
                 keyboard.row(button, button1)
-                keyboard.row(button2)
+                keyboard.row(button2, button3)
                 bot.send_message(message.chat.id, schedule, parse_mode = 'Markdown', reply_markup = keyboard)
             else:
                 schedule_days_int = json_data["Для чётной недели"]
@@ -136,8 +143,9 @@ def schedule(message):
                 button = types.KeyboardButton(text = "Расписание на сегодня")
                 button1 = types.KeyboardButton(text = "Расписание на завтра")
                 button2 = types.KeyboardButton(text = "О нас")
+                button3 = types.KeyboardButton(text = "Полное расписание")
                 keyboard.row(button, button1)
-                keyboard.row(button2)
+                keyboard.row(button2, button3)
                 if schedule == '':
                     schedule = "Упс, но ты ввёл что-то не так."
                 bot.send_message(message.chat.id, schedule, parse_mode = 'Markdown', reply_markup = keyboard)   
@@ -165,7 +173,8 @@ def schedule_next(message):
             parity = 0
     else:
         days_print = days_int
-     
+    
+        
     if parity == 0:
         schedule_days_int = json_data3["Для нечётной недели"]
         schedule = ''
@@ -178,8 +187,9 @@ def schedule_next(message):
         button = types.KeyboardButton(text = "Расписание на сегодня")
         button1 = types.KeyboardButton(text = "Расписание на завтра")
         button2 = types.KeyboardButton(text = "О нас")
+        button3 = types.KeyboardButton(text = "Полное расписание")
         keyboard.row(button, button1)
-        keyboard.row(button2)
+        keyboard.row(button2, button3)
         bot.send_message(message.chat.id, schedule, parse_mode = 'Markdown', reply_markup = keyboard)
     else:
         schedule_days_int = json_data3["Для чётной недели"]
@@ -193,9 +203,11 @@ def schedule_next(message):
         button = types.KeyboardButton(text = "Расписание на сегодня")
         button1 = types.KeyboardButton(text = "Расписание на завтра")
         button2 = types.KeyboardButton(text = "О нас")
+        button3 = types.KeyboardButton(text = "Полное расписание")
         keyboard.row(button, button1)
-        keyboard.row(button2)
+        keyboard.row(button2, button3)
         bot.send_message(message.chat.id, schedule, parse_mode = 'Markdown', reply_markup = keyboard)
+
 
 @bot.message_handler(content_types = ['text'])
 def text(message):
@@ -221,8 +233,9 @@ def text(message):
             button = types.KeyboardButton(text = "Расписание на сегодня")
             button1 = types.KeyboardButton(text = "Расписание на завтра")
             button2 = types.KeyboardButton(text = "О нас")
+            button3 = types.KeyboardButton(text = "Полное расписание")
             keyboard.row(button, button1)
-            keyboard.row(button2)
+            keyboard.row(button2, button3)
             bot.send_message(message.chat.id, schedule, parse_mode = 'Markdown', reply_markup = keyboard)
         else:
             schedule_days_int = json_data["Для чётной недели"]
@@ -236,8 +249,9 @@ def text(message):
             button = types.KeyboardButton(text = "Расписание на сегодня")
             button1 = types.KeyboardButton(text = "Расписание на завтра")
             button2 = types.KeyboardButton(text = "О нас")
+            button3 = types.KeyboardButton(text = "Полное расписание")
             keyboard.row(button, button1)
-            keyboard.row(button2)
+            keyboard.row(button2, button3)
             bot.send_message(message.chat.id, schedule, parse_mode = 'Markdown', reply_markup = keyboard)
     elif message.text.lower() == 'расписание на завтра':
         delta = timedelta(hours = 3)
@@ -273,8 +287,9 @@ def text(message):
             button = types.KeyboardButton(text = "Расписание на сегодня")
             button1 = types.KeyboardButton(text = "Расписание на завтра")
             button2 = types.KeyboardButton(text = "О нас")
+            button3 = types.KeyboardButton(text = "Полное расписание")
             keyboard.row(button, button1)
-            keyboard.row(button2)
+            keyboard.row(button2, button3)
             bot.send_message(message.chat.id, schedule, parse_mode = 'Markdown', reply_markup = keyboard)
         else:
             schedule_days_int = json_data3["Для чётной недели"]
@@ -288,8 +303,9 @@ def text(message):
             button = types.KeyboardButton(text = "Расписание на сегодня")
             button1 = types.KeyboardButton(text = "Расписание на завтра")
             button2 = types.KeyboardButton(text = "О нас")
+            button3 = types.KeyboardButton(text = "Полное расписание")
             keyboard.row(button, button1)
-            keyboard.row(button2)
+            keyboard.row(button2, button3)
             bot.send_message(message.chat.id, schedule, parse_mode = 'Markdown', reply_markup = keyboard)
     elif message.text.lower() == 'о нас':
         keyboard = types.InlineKeyboardMarkup()
