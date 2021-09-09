@@ -9,7 +9,9 @@ import requests
 from telebot import types
 from datetime import datetime, date, timedelta
 
-bot = telebot.TeleBot('1990116731:AAExfJn-_aEPnHOtcv9WnB-hUU4OOpuALP8')
+
+token = os.environ.get('bot_token')
+bot = telebot.TeleBot(str(token))
 print('Бот работает!')
 
 days_count = ['1', '2', '3', '4', '5', '6', '7']
