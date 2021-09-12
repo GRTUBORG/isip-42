@@ -317,9 +317,9 @@ def text(message):
     elif message.text.lower() == 'полное расписание':
         even_numbered_week = open('./Schedule/Чётная неделя.docx', 'rb')
         odd_week = open('./Schedule/Нечётная неделя.docx', 'rb')
-        bot.send_message(message.chat.id, 'Расписание на чётную неделю:')
+        bot.send_message(message.chat.id, '📋 Расписание на *чётную* неделю:', parse_mode = 'Markdown')
         bot.send_document(message.chat.id, even_numbered_week)
-        bot.send_message(message.chat.id, 'Расписание на нечётную неделю:')
+        bot.send_message(message.chat.id, '📋 Расписание на *нечётную* неделю:', parse_mode = 'Markdown')
         bot.send_document(message.chat.id, odd_week)
         even_numbered_week.close()
         odd_week.close()
