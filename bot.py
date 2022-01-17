@@ -313,7 +313,7 @@ def text(message):
         keyboard = types.InlineKeyboardMarkup()
         button = types.InlineKeyboardButton(text = "📝 Написать разработчику", url = 'https://t.me/ppippette')
         keyboard.add(button)
-        bot.send_message(message.chat.id, '*Наша команда* \n\n🧑‍💻 *Разработчик:* @ppippette \n🛠 *Тестировщик:* @whomet \n👉 *Наш Github:* https://github.com/GRTUBORG/isip-42 \n\n• Обо всех _ошибках_, _проблемах_ и Ваших _гениальных идеях_ просьба писать *разработчику* ✍️ \n• *Обновление было:* 12.09.21, v. 1.3', parse_mode = 'Markdown', reply_markup = keyboard)
+        bot.send_message(message.chat.id, '*Наша команда* \n\n🧑‍💻 *Разработчик:* @ppippette \n🛠 *Тестировщик:* @whomet \n👉 *Наш Github:* https://github.com/GRTUBORG/isip-42 \n\n• Обо всех _ошибках_, _проблемах_ и Ваших _гениальных идеях_ просьба писать *разработчику* ✍️ \n• *Обновление было:* 17.01.22, v. 2.0', parse_mode = 'Markdown', reply_markup = keyboard)
     elif message.text.lower() == 'полное расписание':
         even_numbered_week = open('./Schedule/Чётная неделя.docx', 'rb')
         odd_week = open('./Schedule/Нечётная неделя.docx', 'rb')
