@@ -85,6 +85,8 @@ def schedule(message):
             nowtime = now.strftime("(%d.%m.%y)")
             schedule += str(keys)
             schedule = schedule.replace("['", '').replace("']", '').replace(r'\n', '\n').replace("', '", '').replace('()', nowtime)
+            if remotely == 1:
+                schedule = re.sub("\d\d\d", "Дистанционно", schedule)
             keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
             button = types.KeyboardButton(text = "Расписание на сегодня")
             button1 = types.KeyboardButton(text = "Расписание на завтра")
@@ -101,6 +103,8 @@ def schedule(message):
             nowtime = now.strftime("(%d.%m.%y)")
             schedule += str(keys)
             schedule = schedule.replace("['", '').replace("']", '').replace(r'\n', '\n').replace("', '", '').replace('()', nowtime)
+            if remotely == 1:
+                schedule = re.sub("\d\d\d", "Дистанционно", schedule)
             keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
             button = types.KeyboardButton(text = "Расписание на сегодня")
             button1 = types.KeyboardButton(text = "Расписание на завтра")
