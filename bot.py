@@ -12,6 +12,7 @@ from datetime import datetime, date, timedelta
 
 token = os.environ.get('bot_token')
 remotely = os.environ.get('remotely')
+remotely = int(remotely)
 bot = telebot.TeleBot(str(token))
 print('Бот работает!')
 
