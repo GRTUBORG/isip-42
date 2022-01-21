@@ -57,13 +57,13 @@ def send_help(message):
 
 @bot.message_handler(commands = ['schedule_full'])
 def schedule_full(message):
-    even_numbered_week = open('./ИСиП-42. Чётная неделя.pdf', 'rb')
-    odd_week = open('./ИСиП-42. Нечётная неделя.pdf', 'rb')
+    even_numbered_week = open('./Schedule/ИСиП-42. Чётная неделя.pdf', 'rb')
+    odd_week = open('./Schedule/ИСиП-42. Нечётная неделя.pdf', 'rb')
     bot.send_message(message.chat.id, '📋 Расписание на *чётную* неделю:', parse_mode = 'Markdown')
     bot.send_document(message.chat.id, even_numbered_week)
+    even_numbered_week.close()
     bot.send_message(message.chat.id, '📋 Расписание на *нечётную* неделю:', parse_mode = 'Markdown')
     bot.send_document(message.chat.id, odd_week)
-    even_numbered_week.close()
     odd_week.close()
     
 @bot.message_handler(commands = ['schedule'])
