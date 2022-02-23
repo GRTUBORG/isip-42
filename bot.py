@@ -193,7 +193,7 @@ def schedule_next(message):
         schedule = schedule.replace("['", '').replace("']", '').replace(r'\n', '\n').replace("', '", '').replace('()', nowtime)
         if remotely == 1:
             schedule = re.sub("\d\d\d", "_Дистанционно._", schedule)
-            schedule = re.sub("*Аудитории:* _Дистанционно._, _Дистанционно._, _Дистанционно._", "*Аудитория:* _Дистанционно._", schedule)
+            schedule_1 = re.sub("*Аудитории:* _Дистанционно._, _Дистанционно._, _Дистанционно._", "*Аудитория:* _Дистанционно._", schedule)
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
         button = types.KeyboardButton(text = "Расписание на сегодня")
         button1 = types.KeyboardButton(text = "Расписание на завтра")
@@ -201,7 +201,7 @@ def schedule_next(message):
         button3 = types.KeyboardButton(text = "Полное расписание")
         keyboard.row(button, button1)
         keyboard.row(button2, button3)
-        bot.send_message(message.chat.id, schedule, parse_mode = 'Markdown', reply_markup = keyboard)
+        bot.send_message(message.chat.id, schedule_1, parse_mode = 'Markdown', reply_markup = keyboard)
     else:
         schedule_days_int = json_data3["Для чётной недели"]
         schedule = ''
@@ -212,7 +212,7 @@ def schedule_next(message):
         schedule = schedule.replace("['", '').replace("']", '').replace(r'\n', '\n').replace("', '", '').replace('()', nowtime)
         if remotely == 1:
             schedule = re.sub("\d\d\d", "_Дистанционно._", schedule)
-            schedule = re.sub("*Аудитории:* _Дистанционно._, _Дистанционно._, _Дистанционно._", "*Аудитория:* _Дистанционно._", schedule)
+            schedule_1 = re.sub("*Аудитории:* _Дистанционно._, _Дистанционно._, _Дистанционно._", "*Аудитория:* _Дистанционно._", schedule)
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
         button = types.KeyboardButton(text = "Расписание на сегодня")
         button1 = types.KeyboardButton(text = "Расписание на завтра")
@@ -220,7 +220,7 @@ def schedule_next(message):
         button3 = types.KeyboardButton(text = "Полное расписание")
         keyboard.row(button, button1)
         keyboard.row(button2, button3)
-        bot.send_message(message.chat.id, schedule, parse_mode = 'Markdown', reply_markup = keyboard)
+        bot.send_message(message.chat.id, schedule_1, parse_mode = 'Markdown', reply_markup = keyboard)
 
 
 @bot.message_handler(content_types = ['text'])
