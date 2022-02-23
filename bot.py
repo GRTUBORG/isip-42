@@ -214,7 +214,7 @@ def schedule_next(message):
         if remotely == 1:
             schedule = re.sub("\d\d\d", "##", schedule)
             schedule = re.sub("Аудитории:", "Аудитория:", schedule)
-            schedule = re.sub("_Дистанционно._, _Дистанционно._, _Дистанционно._", "Дистанционно.", schedule)
+            schedule = re.sub("######", "Дистанционно.", schedule)
             schedule = re.sub("##", "_Дистанционно._", schedule)
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
         button = types.KeyboardButton(text = "Расписание на сегодня")
