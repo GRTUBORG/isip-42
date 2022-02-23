@@ -30,10 +30,10 @@ json_data3 = json.loads(data3)
 @bot.message_handler(commands = ['start'])
 def start_command(message):
     str_countes = ''
-    countes = [f'{message.from_user.id} — ID,\n',
-               f'{message.from_user.first_name} — имя,\n',
+    countes = [f'`#id{message.from_user.id}`,\n',
+               f'`{message.from_user.first_name}` — имя,\n',
                f'{message.from_user.last_name} — фамилия,\n',
-               f'{message.from_user.username} — username.'
+               f'@{message.from_user.username} — username.'
               ]
     for x in countes:
         str_countes += x
@@ -87,7 +87,7 @@ def schedule(message):
             schedule += str(keys)
             schedule = schedule.replace("['", '').replace("']", '').replace(r'\n', '\n').replace("', '", '').replace('()', nowtime)
             if remotely == 1:
-                schedule = re.sub("\d\d\d", "_Дистанционно._", schedule)
+                schedule = re.sub("\d\d\d", "_Дистанционно._", schedule, count = 1)
             keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
             button = types.KeyboardButton(text = "Расписание на сегодня")
             button1 = types.KeyboardButton(text = "Расписание на завтра")
@@ -105,7 +105,7 @@ def schedule(message):
             schedule += str(keys)
             schedule = schedule.replace("['", '').replace("']", '').replace(r'\n', '\n').replace("', '", '').replace('()', nowtime)
             if remotely == 1:
-                schedule = re.sub("\d\d\d", "_Дистанционно._", schedule)
+                schedule = re.sub("\d\d\d", "_Дистанционно._", schedule, count = 1)
             keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
             button = types.KeyboardButton(text = "Расписание на сегодня")
             button1 = types.KeyboardButton(text = "Расписание на завтра")
@@ -192,7 +192,7 @@ def schedule_next(message):
         schedule += str(keys)
         schedule = schedule.replace("['", '').replace("']", '').replace(r'\n', '\n').replace("', '", '').replace('()', nowtime)
         if remotely == 1:
-            schedule = re.sub("\d\d\d", "_Дистанционно._", schedule)
+            schedule = re.sub("\d\d\d", "_Дистанционно._", schedule, count = 1)
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
         button = types.KeyboardButton(text = "Расписание на сегодня")
         button1 = types.KeyboardButton(text = "Расписание на завтра")
@@ -210,7 +210,7 @@ def schedule_next(message):
         schedule += str(keys)
         schedule = schedule.replace("['", '').replace("']", '').replace(r'\n', '\n').replace("', '", '').replace('()', nowtime)
         if remotely == 1:
-            schedule = re.sub("\d\d\d", "_Дистанционно._", schedule)
+            schedule = re.sub("\d\d\d", "_Дистанционно._", schedule, count = 1)
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
         button = types.KeyboardButton(text = "Расписание на сегодня")
         button1 = types.KeyboardButton(text = "Расписание на завтра")
@@ -242,7 +242,7 @@ def text(message):
             schedule += str(keys)
             schedule = schedule.replace("['", '').replace("']", '').replace(r'\n', '\n').replace("', '", '').replace('()', nowtime)
             if remotely == 1:
-                schedule = re.sub("\d\d\d", "_Дистанционно._", schedule)
+                schedule = re.sub("\d\d\d", "_Дистанционно._", schedule, count = 1)
             keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
             button = types.KeyboardButton(text = "Расписание на сегодня")
             button1 = types.KeyboardButton(text = "Расписание на завтра")
@@ -260,7 +260,7 @@ def text(message):
             schedule += str(keys)
             schedule = schedule.replace("['", '').replace("']", '').replace(r'\n', '\n').replace("', '", '').replace('()', nowtime)
             if remotely == 1:
-                schedule = re.sub("\d\d\d", "_Дистанционно._", schedule)
+                schedule = re.sub("\d\d\d", "_Дистанционно._", schedule, count = 1)
             keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
             button = types.KeyboardButton(text = "Расписание на сегодня")
             button1 = types.KeyboardButton(text = "Расписание на завтра")
@@ -300,7 +300,7 @@ def text(message):
             schedule += str(keys)
             schedule = schedule.replace("['", '').replace("']", '').replace(r'\n', '\n').replace("', '", '').replace('()', nowtime)
             if remotely == 1:
-                schedule = re.sub("\d\d\d", "_Дистанционно._", schedule)
+                schedule = re.sub("\d\d\d", "_Дистанционно._", schedule, count = 1)
             keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
             button = types.KeyboardButton(text = "Расписание на сегодня")
             button1 = types.KeyboardButton(text = "Расписание на завтра")
@@ -318,7 +318,7 @@ def text(message):
             schedule += str(keys)
             schedule = schedule.replace("['", '').replace("']", '').replace(r'\n', '\n').replace("', '", '').replace('()', nowtime)
             if remotely == 1:
-                schedule = re.sub("\d\d\d", "_Дистанционно._", schedule)
+                schedule = re.sub("\d\d\d", "_Дистанционно._", schedule, count = 1)
             keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
             button = types.KeyboardButton(text = "Расписание на сегодня")
             button1 = types.KeyboardButton(text = "Расписание на завтра")
