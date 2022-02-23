@@ -192,7 +192,7 @@ def schedule_next(message):
         schedule += str(keys)
         schedule = schedule.replace("['", '').replace("']", '').replace(r'\n', '\n').replace("', '", '').replace('()', nowtime)
         if remotely == 1:
-            schedule = re.sub("([0-9]{3})", "_Дистанционно._", schedule)
+            schedule = re.sub("\d\d\d", "_Дистанционно._", schedule)
             schedule = re.sub("*Аудитории:* _Дистанционно._, _Дистанционно._, _Дистанционно._", "*Аудитория:* _Дистанционно._", schedule)
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
         button = types.KeyboardButton(text = "Расписание на сегодня")
@@ -211,7 +211,7 @@ def schedule_next(message):
         schedule += str(keys)
         schedule = schedule.replace("['", '').replace("']", '').replace(r'\n', '\n').replace("', '", '').replace('()', nowtime)
         if remotely == 1:
-            schedule = re.sub("([0-9]{3})", "_Дистанционно._", schedule)
+            schedule = re.sub("\d\d\d", "_Дистанционно._", schedule)
             schedule = re.sub("*Аудитории:* _Дистанционно._, _Дистанционно._, _Дистанционно._", "*Аудитория:* _Дистанционно._", schedule)
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
         button = types.KeyboardButton(text = "Расписание на сегодня")
